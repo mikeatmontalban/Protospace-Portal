@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}Request an ID or Keycard{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<h2 style="margin-top:0.35em;margin-bottom:0.1em;">Request an ID or Keycard</h2>
+<h3 style="margin-top:0; margin-bottom:0.5em;">{{ g.user[2] }} {{ g.user[1] }}</h3>
+
+<form method="post">
+  <table border="1" cellspacing="12">
+<tr><td valign="middle"><img src="{{ url_for('static',filename='img/members/' + g.user[0] + '.photo.jpg') }}" alt="Member Photo of {{ g.user[2] }} {{ g.user[1] }}" /></td>
+
+    <td valign="middle"><h5>Cropping your current photo.</h5></td>
+
+</tr>
+</table>
+
+</form>
+
+{% endblock %}

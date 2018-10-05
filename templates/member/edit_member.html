@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}Edit member{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<h3>Edit member information</h3>
+
+<h3>Who are you?</h3>
+
+<form method="post">
+
+<input type="hidden" name="member_id" value="{{ g.user[0] }}" id="member_id" />
+<input type="hidden" name="date_joined" id="date_joined" value="{{ g.user[22] }}" />
+
+<table border="0" cellspacing="12">
+<tr><td colspan="2"><strong>Name of Applicant (The actual member or participant)</strong></td></tr>
+  <tr><td align="right">First Name:</td>
+    <td align="left"><input name="firstname" type="text" value="{{ g.user[3] }}"></td></tr>
+  <tr><td align="right">Middle Name (if any):</td>
+    <td align="left"><input name="middlename" type="text"></td></tr>
+  <tr><td align="right">Last Name</td>
+    <td align="left"><input name="lastname" type="text" value="{{ g.user[2] }}"></td></tr>
+  <tr><td align="right">I prefer to be called<br>(your first name will be used if blank): </td>
+    <td align="left"><input name="prefname" type="text"></td></tr>
+  <tr><td align="right">Forum Name, Handle, Callsign, Hacker Name<br>Secret Identity, or other nickname:</td>
+    <td align="left"><input name="nickname" type="text" value="{{ g.user[5] }}"></td></tr>
+  <tr><td colspan="2">&nbsp;</td></tr>
+      <tr><td colspan="2"><strong>Are you a Youth Member?</strong></td></tr>
+  <tr><td colspan="2"><input name="member_is_minor" type="checkbox">This member is under 18 years of age. (Birthdate is required.)</td></tr>
+  <tr><td align="right">Member birthdate</td>
+    <td align="left"><input name="birthdate" type="date" value=""></td></tr>
+  <tr><td align="right">Parent/Guardian Name (who will sign the forms)</td>
+    <td align="left"><input name="guardian_name" type="text"/></td></tr>
+  <tr><td colspan="2">&nbsp;</td></tr>
+  <tr><td colspan="2"><strong>How can we reach you?</strong></td></tr>
+  <tr><td align="right">Mailing Address</td>
+    <td align="left"><input name="mailing_address" type="text" value="{{ g.user[6] }}"></td></tr>
+ <tr><td align="right">City</td>
+  <td align="left"><input name="city" type="text" value="{{ g.user[7] }}"></td></tr>
+<tr><td align="right">Province</td>
+<td align="left"><input name="province" type="text" value="{{ g.user[8] }}"/></td></tr>
+<tr><td align="right">Postal Code</td>
+<td align="left"><input name="postal_code" type="text" value="{{ g.user[9] }}"/></td></tr>
+<tr><td align="right">Telephone/Mobile:</td>
+<td align="left"><input name="phone" type="text" value="{{ g.user[11] }}"/></td></tr>
+<tr><td align="right">Email Address:</td>
+<td align="left"><input name="email" type="text" value="{{ g.user[10] }}"/></td></tr>
+  <tr><td colspan="2">&nbsp;</td></tr>
+  <tr><td colspan="2"><strong>If you get hurt, lost or kidnapped by Aliens, should we tell anyone?</strong></td></tr>
+  <tr><td colspan="2">(Optional)</td></tr>
+<tr><td align="right">Emergency Contact:</td>
+<td align="left"><input name="emergency_contact" type="text" value="{{ g.user[12] }}"/></td></tr>
+<tr><td align="right">Emergency Phone:</td>
+<td align="left"><input name="emergency_contact_phone" type="text" value="{{ g.user[13] }}"/></td></tr>
+  <tr><td colspan="2">&nbsp;</td></tr>
+<tr><td colspan="2"><strong>Notes or special instructions</strong></td></tr>
+<tr><td colspan="2"><textarea name="new_member_notes" rows="4" cols="60"></textarea></td></tr>
+<tr><td colspan="2"><input type="submit" name="ActionButton" value="Update Me"></td></tr>
+</table>
+
+</form>
+{% endblock %}

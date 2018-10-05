@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}My Home Page{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div id="photoblock" style="float:left;border:1px solid; margin:0 0.8em 0 0;">
+        <img src="/Uploads/Mike Morrow.jpg?height=120" style="height:120px; width:auto; margin:0; padding:0;" alt="Member Photo of Mike Morrow" />
+    </div>
+    <h3> Choose your template:</h3>    
+    
+    <form method="post">
+        <input type="hidden" name="Image" id="image" value="/Uploads/Mike Morrow.jpg" />
+        <div style="margin-top:4px;">
+            <select id="IDChoice" name="IDChoice">
+<option value=""> -- Chose a card style  -- </option>
+<option value="PS 2016 - Camera|Camera.png">PS 2016 - Camera</option>
+<option value="PS 2016 - CPU|CPU.png">PS 2016 - CPU</option>
+<option value="PS 2016 - Gear|Gear.png">PS 2016 - Gear</option>
+<option value="PS 2016 - Nutz|Nutz.png">PS 2016 - Nutz</option>
+<option value="PS 2016 - Rocket|Rocket.png">PS 2016 - Rocket</option>
+<option value="PS 2016 - Fashion|Fashion.png">PS 2016 - Fashion</option>
+<option value="PS 2016 - Hammer|Hammer.png">PS 2016 - Hammer</option>
+<option value="PS 2016 - Camera-Rocket-Nutz|Camera-Rocket-Nutz.png">PS 2016 - Camera-Rocket-Nutz</option>
+<option value="PS 2016 - Rocket-Gear-Chip|Rocket-Gear-Chip.png">PS 2016 - Rocket-Gear-Chip</option>
+<option value="PS 2016 - Rocket-Hammer-Nutz|Rocket-Hammer-Nutz.png">PS 2016 - Rocket-Hammer-Nutz</option>
+<option value="Apex 2016 - Mentor/Keyholder|ApexLogoBar.png">Apex 2016 - Mentor/Keyholder</option>
+</select> 
+        </div>
+        <div id="imgdiv" style="margin-top:6px;">
+            <img id="sampleimg" src="" style="visibility:hidden;"/>
+        </div>
+
+        <div style="margin-top:4px;">
+            <input type="submit" name="CreateCard" id="CreateCard" value="Create Card" />
+        </div>
+    </form>
+
+    {% endblock %}

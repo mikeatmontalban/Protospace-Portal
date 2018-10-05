@@ -1,0 +1,19 @@
+{% extends 'member/home.html' %}
+
+{% block member_home_header %}
+<h1 align="center">{% block title %}Transactions{% endblock %}</h1>
+{% endblock %}
+
+{% block member_home_content %}
+    
+<table border="0" cellspacing="12">
+<tr><th>Date</th><th>TransAmt</th><th>Mth</th><th>TransMemo</th><th>TransID</th><th>Receipt #</th><th>Method</th><th>Account</th></tr>
+{% for (date,amount,description,transaction,category) in transactions %}
+<tr><td>{{ date }}</td><td align="right">{{ amount }}</td><td>0</td><td>{{ description }}</td>
+  <td align="right">{{ transaction }}</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+{% endfor %}
+</table>
+
+<p><a href="http:/money/new_transaction.html">New Transaction</a>
+
+{% endblock %}

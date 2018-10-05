@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}Reprint Membership Forms{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<h1 align="center">PDFify the member info</h1>
+
+<table border="1" cellspacing="12">
+  <tr>
+    <td align="right">Last Name</td><td align="left"><tt>{{ lastname }}</td></tr>
+<td align="right">First Name</td><td align="left"><tt>{{ firstname }}</tt></td></tr>
+<td align="right">Nickname</td><td align="left"><tt>{{ nickname }}</tt></td></tr>
+<td align="right">Mailing Adress</td><td align="left"><tt>{{ mailing_address }}</tt></td></tr>
+<td align="right">City</td><td align="left"><tt>{{ city }}</tt></td></tr>
+<td align="right">Province</td><td align="left"><tt>{{ province }}</tt></td></tr>
+<td align="right">Postal Code</td><td align="left"><tt>{{ postal_code }}</tt></td></tr>
+<td align="right">Email</td><td align="left"><tt>{{ email }}</tt></td></tr>
+<td align="right">Phone</td><td align="left"><tt>{{ phone }}</tt></td></tr>
+<td align="right">Application Date</td><td align="left"><tt>{{ application_date }}</tt></td></tr>
+</table>
+
+{% endblock %}

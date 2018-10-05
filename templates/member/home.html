@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">My Home Page</h1>
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ member_record[3] + ' ' + member_record[2] }}</h1>
+<h3>Email: <tt>{{ member_record[10] }}</tt>
+  <a href="{{ url_for('member.add_email') }}">Add email</a>&nbsp;&nbsp;
+  <a href="{{ url_for('member.edit_member') }}">Edit Member</a></h3>
+
+<table border="1" cellspacing="12">
+  <tr><td><img src="{{ url_for('static',filename='img/members/' + (member_record[0])|string + '.jpg') }}" height="120" width="90"></td>
+    <td>
+      <table border="0" cellspacing="6">
+	<tr><th align="right">Expiry:</th><td>{{ member_record[21] }}</td></tr>
+	<tr><th align="right">Status:</th><td>Prepaid</td></tr>
+	<tr><th align="right">ProtoCredit:</th><td>111.09  ◈   <a href="member_cash_journal">Journal</a></td></tr>
+	<tr><td colspan="2">&nbsp;</td></tr>
+	<tr><th align="right">Application Date:</th><td>{{ member_record[20] }}</td></tr>
+	<tr><th align="right">Vetted:</th><td>{{ member_record[21] }}</td></tr>
+	<tr><th align="right">Current Start:</th><td>{{ member_record[22] }}</td></tr>
+	<tr><th align="right">Expiry:</th><td>{{ member_record[23] }}</td></tr>
+	<tr><th align="right">Monthly:</th><td>50.00</td></tr>
+	<tr><th align="right">DB ID:</th><td>{{ member_record[0] }}</td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<p><i>Request changes, ask questions, or report any errors by sending email to info@protospace.ca.
+    <br>Information before June 2014 has not been entered into this database.</i>
+<br><i>Thanks for being a long-term member!</i>
+
+<hr>
+
+<form method="POST">
+  {% if submenu == "Transactions" %}
+  {% for value in ["Training","Membership","Keys","Storage","Notes"] %}
+  <input type="submit" name="submenu" value="{{ value }}">
+  {% endfor %}
+  {% elif submenu == "Training" %}
+  {% for value in ["Transactions","Membership","Keys","Storage","Notes"] %}
+  <input type="submit" name="submenu" value="{{ value }}">
+  {% endfor %}
+  {% elif submenu == "Membership" %}
+  {% for value in ["Transactions","Training","Keys","Storage","Notes"] %}
+  <input type="submit" name="submenu" value="{{ value }}">
+  {% endfor %}
+  {% elif submenu == "Keys" %}
+  {% for value in ["Transactions","Training","Membership","Storage","Notes"] %}
+  <input type="submit" name="submenu" value="{{ value }}">
+  {% endfor %}
+  {% elif submenu == "Storage" %}
+  {% for value in ["Transactions","Training","Membership","Keys","Notes"] %}
+  <input type="submit" name="submenu" value="{{ value }}">
+  {% endfor %}
+  {% elif submenu == "Notes" %}
+  {% for value in ["Transactions","Training","Membership","Keys","Storage"] %}
+  <input type="submit" name="submenu" value="{{ value }}">
+  {% endfor %}
+  {% else %}
+  {% for value in ["Transactions","Training","Membership","Keys","Storage","Notes"] %}
+  <input type="submit" name="submenu" value="{{ value }}">
+  {% endfor %}
+{% endif %}
+</form>
+
+  <section class="content">
+  <header>
+    {% block member_home_header %}{% endblock %}
+  </header>
+<!--
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+-->
+  {% block member_home_content %}{% endblock %}
+    </section>
+
+  <hr>
+  
+<h3>Change Payment Info</h3>
+Use this link to set up an automatic subscription:<br />
+Paypal: <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick-subscriptions&amp;business=info%40protospace%2eca&amp;currency_code=CAD&amp;no_shipping=1&amp;no_note=1&amp;a3=50.00&amp;p3=1&amp;t3=M&amp;src=1&amp;sra=1&amp;a1=50.00&amp;p1=75&amp;t1=D&amp;item_name=Mike%20Morrow%20-%20Protospace%20Membership&amp;invoice=291">Monthly Subscription</a>
+
+<p>A one-time payment of $50.00 covers October 5 until November 5, which is 75 days from now.
+<br>Then, you pay $50.00 each month.
+
+<hr>
+
+<h3>User Actions</h3>
+
+<div style="margin-top:4px;"><a href="{{ url_for('member.change_password') }}">Change my password</a></div>
+<div style="margin-top:4px;"><a href="{{ url_for('member.request_new_keycard') }}">Request a new or replacement ID/Keycard</a></div>
+<div style="margin-top:4px;"><a href="{{ url_for('member.member_cash_journal') }}">Member Cash Journal</a></div>
+<div style="margin-top:4px;"><a href="{{ url_for('member.add_keycard') }}">Add Keycard</a></div>
+<div style="margin-top:4px;"><a href="{{ url_for('member.reprint_membership_forms') }}">Reprint Membership Forms</a></div>	    
+
+{% endblock %}
+

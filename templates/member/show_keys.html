@@ -1,0 +1,17 @@
+{% extends 'member/home.html' %}
+
+{% block member_home_header %}
+<h1 align="center">{% block title %}Keys{% endblock %}</h1>
+{% endblock %}
+
+{% block member_home_content %}
+      <table border="1" cellspacing="12">
+    <tr><th>Card Number</th><th>Notes</th><th>Last Seen</th></tr>
+    <tr>
+      <td>{{ card_number }}</td>
+      <td>{{ notes }}</td>
+      <td>{{ last_seen }}</td>
+    </tr>
+    </table>
+
+{% endblock %}

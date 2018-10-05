@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}Cash Payment{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div>
+
+
+    <form method="post">
+
+        <div style="margin-top:8px;"><label for="date" class="font11">Transaction Date:</label></div>
+        <div style="margin-top:4px;"><input type="date" id="date" name="date" value="{{ today }}" /></div>
+        
+        <div style="margin-top:8px;"><label for="account" class="font11">Payment Source:</label></div>
+        <div style="margin-top:4px;"><select id="account" name="account">
+	    <option value=""> -- Select an account -- </option>
+	    <option value="Cash">Cash (CAD Lock Box)</option>
+	    <option value="Interac">Interac (Email) Transfer (TD)</option>
+	    <option value="Square Pmt">Square (Credit)</option>
+	    <option value="Dream Pmt">Dream Payments (Debit/Credit)</option>
+	    <option value="TD Chequing">Deposit to TD (Not Interac)</option>
+	    <option value="PayPal">PayPal</option>
+	    <option value="Member">Member Balance / Protocash</option>
+	    <option value="Clearing">Supense (Clearing)  Acct / Membership Adjustment</option>
+	</select></div>
+        <div style="margin-top:8px;"><label for="refnum" class="font11">Original Reference (blank for cash):</label></div>
+        <div style="margin-top:4px;"><input name="refnum" id="refnum" type="text" value="" /></div>
+
+        <div style="margin-top:8px;"><label for="memberbox" class="font11">Member Account:</label></div>
+        <div style="margin-top:4px;"><select id="memberbox" name="memberbox" onchange="ChooseMember(this)">
+	    {{ member_list|safe }}
+	</select></div>
+        <div style="margin-top:8px;"><label for="paidby" class="font11">Paid By:</label></div>
+        <div style="margin-top:4px;"><input name="paidby" id="paidby" value=""  /></div>
+        
+        <div style="margin-top:8px;"><label for="amount" class="font11">Amount:</label></div>
+        <div style="margin-top:4px;"><input name="amount" id="amount" type="number" value="0.00" step="0.01"/></div>
+
+        <div style="margin-top:8px;"><label for="category" class="font11">Category:</label></div>
+        <div style="margin-top:4px;"><select id="category" name="category">
+	    <option value=""> -- Select a category -- </option>
+	    <option value="Membership">Membership Dues</option>
+	    <option value="OnAcct">Payment On Account or Prepayment</option>
+	    <option value="Snacks">Snack / Pop / Coffee</option>
+	    <option value="Donation">Donations</option>
+	    <option value="Consumables">Consumables: Gas, Filament, Laser Time (Specify which)</option>
+	    <option value="Purchases">Purchases of Goods or Parts or Stock</option>
+	    <option value="Garage Sale">Auction, Garage Sale, Nearly Free Shelf, Etc.</option>
+	    <option value="Reimburse">Reimbursement (Enter a negative value)</option>
+	    <option value="Other">Other (Explain in Memo or by Email)</option>
+	</select></div>
+        <div style="margin-top:8px;"><label for="months" class="font11">Number of Months Membership (0 for non-dues):</label></div>
+        <div style="margin-top:4px;"><input name="months" id="months" value="0"  min="-12" max="60"  type="number" /></div>
+        <div style="margin-top:8px;"><label for="memo" class="font11">Notes/Memo/Details:</label></div>
+        <div style="margin-top:4px;"><input name="memo" id="memo" type="text" size="60" value=""/></div>
+
+        <div style="margin-top:8px;">
+
+            <input name="ActionButton" type="submit" value="Accept Payment" style="margin-left:0px;" />
+        </div>
+    </form>
+</div>
+
+{% endblock %}

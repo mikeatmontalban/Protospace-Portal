@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}Member Vacation or Resignation{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<form method="post">
+  <label for="memberbox" class="font11">Member:</label> 
+  <select name="memberbox">
+    <option value=""> -- Select a member -- </option>
+    {% for (member_id,firstname,lastname) in members %}
+    <option value="{{ member_id }}">{{ firstname + ' ' + lastname }}</option>
+    {% endfor %}
+  </select>
+
+  <div style="margin-top:4px;margin-bottom:12px;">
+    <label for="eff_date" class="font11">Effective date (current expiry if blank):</label>
+    <input style="margin-top:0px" type="date" name="effective_date" /> 
+  </div>
+  <div style="margin-top:4px;margin-bottom:12px;">
+    <input style="margin-top:0px" name="record_as_vacation" type="checkbox">Record as Vacation<br/>
+  </div>
+
+  <input style="margin-top:0px;" type="submit" name="ActionButton" value="End Membership" />
+        
+</form>
+
+{% endblock %}

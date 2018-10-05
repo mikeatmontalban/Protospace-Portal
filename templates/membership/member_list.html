@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+
+<div style="width:350px; text-align:center;margin-left:auto; margin-right:auto;">
+
+<div>
+    <div id="MemberListGrid" style="margin-top:8px; width:100%">
+    <table class="membergrid">
+    <thead>
+        <tr class="head">
+            <th scope="col"><a href="/account/listmembers?latest_tx=member_id&amp;sortdir=ASC">ID</a></th>
+            <th scope="col"><a href="/account/listmembers?latest_tx=Member+Name&amp;sortdir=ASC">Member Name</a></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr  class="nomargin nopadding font11 head">
+            <td colspan="5"><a href="/account/listmembers?page=2">Next</a> </td>
+        </tr>
+    </tfoot>
+    <tbody>
+      {% for (member_id,firstname,lastname) in members %}
+        <tr>
+          <td class="small memberid ">{{ member_id }}</td>
+          <td class="name"><div style="line-height:0.8em;"><a href="{{ url_for('member.member') }}{{ member_id }}">
+		{{ firstname }} {{ lastname }}</a><span style="display:inline;font-size: 0.60em;">&nbsp;</span></div></td>
+	  <td><div  class="icon2 " /></td>
+            <td class="photo"><img height='40' width='auto' src="{{ url_for('static',filename='img/members/' + member_id|string() + '.jpg') }}"></td>
+            <td><div class="green">&nbsp;</div></td>
+        </tr>
+	{% endfor %}
+    </tbody>
+    </table>
+    </div>
+
+    <div class="font11" style="margin-top:8px; width:100%">
+Found 292 records. Filters may be applied.    </div>
+</div>
+         <div id="NavCircles" style="margin-top:8px;">
+            <a href="/account/ListMembers/GrnYel"><div class="grnyel"></div></a>
+            <div class="spacer15"> </div>
+            <a href="/account/ListMembers/Green"><div class="green"> </div></a>
+            <div class="spacer15"> </div>
+            <a href="/account/ListMembers/Yellow"><div class="yellow"> </div></a>
+            <div class="spacer15"> </div>
+            <a href="/account/ListMembers/Red"><div class="red"> </div></a>
+            <div class="spacer15"> </div>
+            <a href="/account/ListMembers/All"><div class="rainbow"> </div></a>
+            <div class="spacer15"> </div>
+            <a href="/account/ListMembers/new"><div class="new"> </div></a>
+            <div class="spacer15"> </div>
+            <a href="/account/ListMembers/outline"><div class="outline"> </div></a>
+
+        </div>
+</div>
+
+{% endblock %}

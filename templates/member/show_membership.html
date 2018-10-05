@@ -1,0 +1,18 @@
+{% extends 'member/home.html' %}
+
+{% block member_home_header %}
+<h1 align="center">{% block title %}Membership{% endblock %}</h1>
+{% endblock %}
+
+{% block member_home_content %}
+    
+<table border="0" cellspacing="12">
+<tr><th>Type</th><th>Started</th><th>Ended</th><th>Monthly</th><th>DbRef</th><th>Edit</th></tr>
+<tr><td>Regular Member, Old Rate</td><td>2013-02-05</td><td>&nbsp;</td><td>50.00</td><td>117</td>
+  <td><a href="{{ url_for('member.new_membership_record') }}">Edit</a></td></tr>
+</table>
+
+<p><a href="{{ url_for('member.new_membership_record') }}">New Membership Record</a>    ◈
+<a href="http://member/quit_or_vacation.html">Quit/Vacation</a>
+
+{% endblock %}

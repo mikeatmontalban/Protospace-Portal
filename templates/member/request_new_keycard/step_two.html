@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}Request an ID or Keycard{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<h3 style="margin-top:0; margin-bottom:0.5em;">{{ g.user[2] }} {{ g.user[3] }}</h3>
+
+<form method="POST" action="PickBackground">
+  <table border="0" cellspacing="12">
+    <tr>
+      <td valign="top">
+	<img src="{{ url_for('static',filename='img/members/' + g.user[1] + '.photo.jpg') }}" alt="Member Photo of {{ g.user[3] }} {{ g.user[2] }}" /></td>
+
+      <td valign="top">
+        <select name="Background">
+	  <option value=""> -- Chose a card style  -- </option>
+	  <option value="Camera.png">Camera</option>
+	  <option value="CPU.png">CPU</option>
+	  <option value="Gear.png">Gear</option>
+	  <option value="Nutz.png">Nutz</option>
+	  <option value="Rocket.png">Rocket</option>
+	  <option value="Fashion.png">Fashion</option>
+	  <option value="Hammer.png">Hammer</option>
+	  <option value="Camera-Rocket-Nutz.png">Camera-Rocket-Nutz</option>
+	  <option value="Rocket-Gear-Chip.png">Rocket-Gear-Chip</option>
+	  <option value="Rocket-Hammer-Nutz.png">Rocket-Hammer-Nutz</option>
+	  <option value="Mentor/Keyholder|ApexLogoBar.png">Mentor/Keyholder</option>
+	</select>
+      </td>
+
+      <td valign="top">
+	<input type="submit" name="request_new_card_two" value="Create Card">
+      </td>
+    </tr>
+  </table>
+</form>
+
+{% endblock %}

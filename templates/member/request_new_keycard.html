@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}Request an ID or Keycard{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<h3 style="margin-top:0; margin-bottom:0.5em;">{{ g.user[3] }} {{ g.user[2] }}</h3>
+
+<form method="post" enctype="multipart/form-data">
+  <table border="0" cellspacing="12">
+    <tr>
+      <td valign="top"><img src="{{ url_for('static',filename='img/members/' + g.user[1] + '.photo.jpg') }}" alt="Member Photo of {{ g.user[3] }} {{ g.user[2] }}" />
+      </td>
+
+      <td valign="top">
+	{% if step == "" %}
+	<select name="photo_choice" id="photo_choice">
+          <option value="UseDB" selected>Use this member photo</option>
+          <option value="Upload">Upload a new photo</option>
+          <option value="CropDB">Crop this photo</option>
+	</select>
+	<input type="hidden" name="next_step" value="one">
+	{% elif step == "upload" %}
+	Upload an image.
+          <div class="file-upload" id="file-upload-0" style="margin-top:6px;">
+            <div>
+                <input name="fileUpload" type="file" />
+            </div>
+          </div>
+	<input type="hidden" name="next_step" value="pick_background">
+	{% elif step == "cropdb" %}
+	Crop this photo
+	<input type="hidden" name="next_step" value="pick_background">
+	{% elif step == "pick_background" %}
+	<select name="background">
+	  <option value=""> -- Chose a card style  -- </option>
+	  <option value="Camera.png">Camera</option>
+	  <option value="CPU.png">CPU</option>
+	  <option value="Gear.png">Gear</option>
+	  <option value="Nutz.png">Nutz</option>
+	  <option value="Rocket.png">Rocket</option>
+	  <option value="Fashion.png">Fashion</option>
+	  <option value="Hammer.png">Hammer</option>
+	  <option value="Camera-Rocket-Nutz.png">Camera-Rocket-Nutz</option>
+	  <option value="Rocket-Gear-Chip.png">Rocket-Gear-Chip</option>
+	  <option value="Rocket-Hammer-Nutz.png">Rocket-Hammer-Nutz</option>
+	  <option value="Mentor/Keyholder|ApexLogoBar.png">Mentor/Keyholder</option>
+	</select>
+	<p><img src="{{ url_for('static',filename='img/card_backgrounds/Rocket.png') }}" />
+	<input type="hidden" name="next_step" value="prepare_card">
+	{% elif step == "prepare_card" %}
+	Your card is being prepared.
+	{% endif %}
+      </td>
+
+      <td valign="top"><input type="submit" name="request_new_keycard" value="Next" /></td>
+
+    </tr>
+  </table>
+
+</form>
+
+{% endblock %}

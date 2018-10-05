@@ -1,0 +1,16 @@
+{% extends '../home.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}Training and Events at Protospace{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<table border="0" cellspacing="12">
+  <tr><th>Subject</th><th>Class#</th><th>Date</th><th>Confirmed</th><th>Open</th><td>&nbsp;</td></tr>
+{% for class in classes %}
+<tr><td>{{ class.name }}</td><td>123</td><td>{{ class.date }}</td><td>{{ class.instructor }}</td><td>10</td><td>Learn more</td></tr>
+
+{% endfor %}
+</table>
+{% endblock %}
+

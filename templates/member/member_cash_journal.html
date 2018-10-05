@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}Member Cash Balance{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<h4><a href="{{ url_for('member.member') }}">{{ name }}</a>&nbsp;({{ member_id }})</h4>
+
+<table class="grid">
+  <thead>
+    <tr class="head">
+      <th scope="col">Date</th>
+      <th scope="col">Transaction</th>
+      <th scope="col">Description</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Balance</th>
+      <th scope="col">Category</th>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for (date,transaction,description,amount,balance,category) in member_journal %}
+    <tr>
+      <td>{{ date }}</td><td align="right">{{ transaction }}</td><td>{{ description }}</td>
+      <td align="right">{{ amount }}</td><td align="right">{{ balance }}</td><td>{{ category }}</td><td>{{ name }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+
+</table>
+
+{% endblock %}

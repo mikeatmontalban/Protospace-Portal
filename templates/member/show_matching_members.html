@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block member_home_header %}
+<h1 align="center">{% block title %}Members who match{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    
+<table border="0" cellspacing="12">
+<tr><th>Member ID</th><th>Member Name</th><th>Status</th><th>&nbsp;</th></tr>
+{% for (member_id, member_link, photo_url) in matching_members %}
+<tr><td align="right">{{ member_id }}</td><td>{{ member_link|safe }}</td><td>{{ photo_url|safe }}</td></tr>
+{% endfor %}
+</table>
+
+{% endblock %}

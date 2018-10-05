@@ -1,0 +1,405 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}Recent Door Attempts{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div id="Recent Door Div">
+    <h3 id="Recent Door H3">Recent Door Attempts <i class="fas fa-id-card"></i> 
+            <span id="ShowAll" name="ShowAll" style="font-size:x-small;" class="small">
+                &nbsp;&#9672;&nbsp;&nbsp;<a href="/Admin/DoorReport/all">Show All</a>
+            </span>
+    </h3>
+        <div id="door">
+                    <script type="text/javascript">
+        (function($) {
+            $.fn.swhgLoad = function(url, containerId, callback) {
+                url = url + (url.indexOf('?') == -1 ? '?' : '&') + '__swhg=' + new Date().getTime();
+
+                $('<div/>').load(url + ' ' + containerId, function(data, status, xhr) {
+                    $(containerId).replaceWith($(this).html());
+                    if (typeof(callback) === 'function') {
+                        callback.apply(this, arguments);
+                    }
+                });
+                return this;
+            }
+
+            $(function() {
+                $('table[data-swhgajax="true"],span[data-swhgajax="true"]').each(function() {
+                    var self = $(this);
+                    var containerId = '#' + self.data('swhgcontainer');
+                    var callback = getFunction(self.data('swhgcallback'));
+
+                    $(containerId).parent().delegate(containerId + ' a[data-swhglnk="true"]', 'click', function() {
+                        $(containerId).swhgLoad($(this).attr('href'), containerId, callback);
+                        return false;
+                    });
+                })
+            });
+
+            function getFunction(code, argNames) {
+                argNames = argNames || [];
+                var fn = window, parts = (code || "").split(".");
+                while (fn && parts.length) {
+                    fn = fn[parts.shift()];
+                }
+                if (typeof (fn) === "function") {
+                    return fn;
+                }
+                argNames.push(code);
+                return Function.constructor.apply(null, argNames);
+            }
+        })(jQuery);
+        </script>
+    <table class="grid" data-swhgajax="true" data-swhgcontainer="door" data-swhgcallback="">
+    <thead>
+        <tr class="head">
+            <th scope="col">
+<a data-swhglnk="true" href="/Admin/DoorReport?sort=date_string&amp;sortdir=ASC">Date/Time</a>            </th>
+            <th scope="col">
+<a data-swhglnk="true" href="/Admin/DoorReport?sort=member_id&amp;sortdir=ASC">Member</a>            </th>
+            <th scope="col">
+            </th>
+            <th scope="col">
+<a data-swhglnk="true" href="/Admin/DoorReport?sort=rfid&amp;sortdir=ASC">Card</a>            </th>
+            <th scope="col">
+            </th>
+            <th scope="col">
+<a data-swhglnk="true" href="/Admin/DoorReport?sort=action&amp;sortdir=ASC">Action</a>            </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr >
+            <td colspan="6">1 <a data-swhglnk="true" href="/Admin/DoorReport?page=2">2</a> <a data-swhglnk="true" href="/Admin/DoorReport?page=3">3</a> <a data-swhglnk="true" href="/Admin/DoorReport?page=4">4</a> <a data-swhglnk="true" href="/Admin/DoorReport?page=5">5</a> <a data-swhglnk="true" href="/Admin/DoorReport?page=2">Next</a> <a data-swhglnk="true" href="/Admin/DoorReport?page=180">Last</a></td>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr>
+            <td>2018-08-02 14:35</td>
+            <td><a href="/account/ShowMember/291">Mike Morrow</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">19006B1661</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-08-02 14:35</td>
+            <td><a href="/account/ShowMember/291">Mike Morrow</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">19006B1661</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-08-02 14:35</td>
+            <td><a href="/account/ShowMember/291">Mike Morrow</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">19006B1661</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-08-02 06:01</td>
+            <td><a href="/account/ShowMember/4107">Mason Spielman</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">0000EC3D85</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-08-01 09:46</td>
+            <td><a href="/account/ShowMember/1880">Lucas Bergen</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A0019A246</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-08-01 09:30</td>
+            <td><a href="/account/ShowMember/1880">Lucas Bergen</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A0019A246</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-08-01 09:29</td>
+            <td><a href="/account/ShowMember/1880">Lucas Bergen</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A0019A246</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-08-01 09:01</td>
+            <td><a href="/account/ShowMember/4107">Mason Spielman</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">0000EC3D85</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-08-01 08:48</td>
+            <td><a href="/account/ShowMember/478">Sav Sidorov</a></td>
+            <td><i class="fas fa-circle" style="color:yellow"></i></td>
+            <td class="font11 ">0000064B6C</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-08-01 08:48</td>
+            <td><a href="/account/ShowMember/478">Sav Sidorov</a></td>
+            <td><i class="fas fa-circle" style="color:yellow"></i></td>
+            <td class="font11 ">0000064B6C</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-08-01 06:08</td>
+            <td><a href="/account/ShowMember/4107">Mason Spielman</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">0000EC3D85</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-07-31 23:06</td>
+            <td><a href="/account/ShowMember/266">Joe Piche</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">380020AA50</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-07-31 20:16</td>
+            <td><a href="/account/ShowMember/1939">Spike Chuong</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A0019537D</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-07-31 19:26</td>
+            <td><a href="/account/ShowMember/4152">Angelique Lavigne</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">2100F610AA</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-07-31 18:50</td>
+            <td><a href="/account/ShowMember/1765">Pat Spencer</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">0000410A11</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-07-31 18:32</td>
+            <td><a href="/account/ShowMember/392">Scott Young</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">280255A9CF</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-07-31 18:29</td>
+            <td><a href="/account/ShowMember/1765">Pat Spencer</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">0000410A11</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-07-31 18:26</td>
+            <td><a href="/account/ShowMember/302">Peter Carless</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">19006AFFD9</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-07-31 18:21</td>
+            <td><a href="/account/ShowMember/1939">Spike Chuong</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A0019537D</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-07-31 18:20</td>
+            <td><a href="/account/ShowMember/398">James McCarthy</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">280255A6ED</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-07-31 18:17</td>
+            <td><a href="/account/ShowMember/304">Robb Leece</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">1D001023FC</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-07-31 18:08</td>
+            <td><a href="/account/ShowMember/398">James McCarthy</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">280255A6ED</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-07-31 17:54</td>
+            <td><a href="/account/ShowMember/1689">Corbin Uhl</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">0000E38084</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-07-31 15:00</td>
+            <td><a href="/account/ShowMember/1880">Lucas Bergen</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A0019A246</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-07-31 14:57</td>
+            <td><a href="/account/ShowMember/1880">Lucas Bergen</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A0019A246</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-07-31 13:46</td>
+            <td><a href="/account/ShowMember/574">Christopher Shepard</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3D005E7575</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-07-31 12:35</td>
+            <td><a href="/account/ShowMember/1880">Lucas Bergen</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A0019A246</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-07-31 12:17</td>
+            <td><a href="/account/ShowMember/4128">Jeremy Morrison</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A00192E5B</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-07-31 09:44</td>
+            <td><a href="/account/ShowMember/4128">Jeremy Morrison</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A00192E5B</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-07-31 07:42</td>
+            <td><a href="/account/ShowMember/1829">Robin Clysdale</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">0000410A54</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-07-31 06:41</td>
+            <td><a href="/account/ShowMember/4107">Mason Spielman</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">0000EC3D85</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-07-31 06:32</td>
+            <td><a href="/account/ShowMember/4128">Jeremy Morrison</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A00192E5B</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-07-31 04:37</td>
+            <td><a href="/account/ShowMember/4128">Jeremy Morrison</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A00192E5B</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-07-31 01:40</td>
+            <td><a href="/account/ShowMember/4128">Jeremy Morrison</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A00192E5B</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-07-31 00:20</td>
+            <td><a href="/account/ShowMember/4128">Jeremy Morrison</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A00192E5B</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-07-31 00:19</td>
+            <td><a href="/account/ShowMember/1963">Connor Gelinas</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A0013D3FD</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-07-30 23:40</td>
+            <td><a href="/account/ShowMember/1963">Connor Gelinas</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A0013D3FD</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-07-30 16:26</td>
+            <td><a href="/account/ShowMember/515">Stephen Wong</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3D00660274</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr>
+            <td>2018-07-30 16:16</td>
+            <td><a href="/account/ShowMember/230">Danny Pollard</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">19006B27DF</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+        <tr class="altRow">
+            <td>2018-07-30 16:14</td>
+            <td><a href="/account/ShowMember/1963">Connor Gelinas</a></td>
+            <td><i class="fas fa-circle" style="color:green"></i></td>
+            <td class="font11 ">3A0013D3FD</td>
+            <td><i class="fas fa-check-circle" style="color:green"></i></td>
+            <td class="font11 ">ALLOWED</td>
+        </tr>
+    </tbody>
+    </table>
+
+        </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}Delete Duplicate Member{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    
+<form method="post">
+  <div style="margin-top:8px;"> 
+    <label for="memberbox" class="font11">Member:</label> 
+  </div>
+  <div style="margin-top:4px;">
+    <select id="memberbox" name="memberbox">
+      <option value=""> -- Select a member -- </option>
+      {% for (member_id,firstname,lastname) in members %}
+      <option value="{{ member_id }}">{{ firstname + ' ' + lastname + ' (' + member_id|string() + ')' }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div style="margin-top:8px;"> 
+    <label for="RequestedID">Confirm the Member ID:</label>
+  </div>
+  <div style="margin-top:4px;margin-bottom:12px;">
+    <input style="margin-top:0px" name="delete_this_id" /> 
+  </div>
+
+  <input style="margin-top:px;" type="submit" name="ActionButton" value="Delete" />
+        
+</form>
+    
+{% endblock %}

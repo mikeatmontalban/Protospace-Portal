@@ -1,0 +1,24 @@
+{% extends 'member/home.html' %}
+
+{% block member_home_header %}
+<h1 align="center">{% block title %}Training{% endblock %}</h1>
+{% endblock %}
+
+{% block member_home_content %}
+    
+<table border="0" cellspacing="6">
+  <tr><th>Course</th><th>Date</th><th>Status</th><th>Class #</th><th>Course #</th></tr>
+  {% for (course_title,class_date_time,status,class_id,course_id) in my_history %}
+  <tr><td>{{ course_title }}</td><td>{{ class_date_time }}</td><td>{{ status }}</td><td align="right">{{ class_id }}</td><td align="right">{{ course_id }}</td></tr>
+  {% endfor %}
+</table>
+
+<p><strong>Attended</strong>: You completed this class by attending.
+<br><strong>Confirmed</strong>: You are scheduled for this class. No fee is outstanding.
+<br><strong>Waiting for payment</strong>: Your seat may be released if you have not paid.
+<br><strong>Withdrawn</strong>: You dropped out before attending. You may be eligible for a refund.
+<br>&nbsp;&nbsp;(Paypal payments show immediately. All others are manually processed.)
+
+<p><a href="//http://training">Upcoming classes and seminars</a>
+
+{% endblock %}

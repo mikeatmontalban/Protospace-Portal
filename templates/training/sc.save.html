@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h3>Schedule a Class</h3>
+{% endblock %}
+
+{% block content %}
+<div>
+    <form method="post">
+    <div style="color:red;">
+
+        <div class="validation-summary-valid" data-valmsg-summary="true"><ul>
+</ul></div>
+    </div>
+
+
+    <div>
+        <label class="width125" for="course">Choose a course:</label>
+        <select id="course" name="course_id">
+	  {{ course_list|safe }}
+	</select>
+    </div>
+
+    <div style="margin-top:1em;">
+        <label class="width125" for="class_date">Class date:</label>
+        <input  type="date" name="class_date" value="" /><br />
+        <label class="width125" for="start_time">Starting time:</label>
+        <input style="margin-top:3px;"  type="time" name="start_time" value="" placeholder="02:00 PM" />
+    </div>    
+    <div style="margin-top:1em;">
+        <label class="width125" for="min">Minimum:</label>
+        <input type="number" name="min" min="0" max="100" value="1" />
+    </div>
+    <div style="margin-top:3px;">
+        <label class="width125" for="max">Maximum:</label>
+        <input type="number" name="max" min="1" max="100" value="12" />
+    </div>
+         <div style="margin-top:3px;">
+        <label class="width125" for="max">Member Cost:</label>
+        <input type="number" name="fee_for_member" min="0" max="1000" value="0" />
+    </div>
+         <div style="margin-top:3px;">
+        <label class="width125" for="max">Non-Member Cost:</label>
+        <input type="number" name="fee_for_nonmember" min="0" max="1000" value="10" />
+    </div>
+
+    <div style="margin-top:1em;">
+        <label class="width125" for="instructor_id">Instructor:</label>    
+        <select id="instructor_id" name="instructor_id">
+	  <option value=""></option>
+	</select>
+    </div>    
+    <div style ="margin-top:3px;">
+        <label class="width125" for="administrator_id">Course Admin:</label>
+        <select id="administrator_id" name="administrator_id">
+	  <option value=""></option>
+	</select>
+    </div>
+    <div style="margin-top:6px;">
+        <label name="spacer" class="width125">&nbsp;</label>
+        <input checked="checked" id="online_reg" name="online_reg" type="checkbox" />
+        <label for="online_reg">Allow members to self-register online</label>
+    </div>
+    <div style="margin-top:1em;">
+        <label name="spacer" class="width125">&nbsp;</label>
+        <input type="submit" name="ActionButton" value="Schedule Class" />
+    </div>
+
+</form>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Register{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <table border="0" cellspacing="12">
+      <tr>
+	<td colspan="4" width="40%"><label for="lastname">Last Name</label>
+	    <br><input name="lastname" id="lastname" type="text" size="25" required></td>
+	<td colspan="4" width="40%"><label for="firstname">First Name</label>
+	  <br><input name="firstname" id="firstname" required></td>
+	<td colspan="4"><label for="nickname">Nickname (optional)</label>
+	  <br><input name="nickname" id="nickname"></td>
+      </tr>
+      <tr>
+	<td colspan="3"><label for="mailing_address">Mailing Address</label>
+	  <br><input name="mailing_address" id="mailing_address"></td>
+	<td colspan="3"><label for="city">City</label>
+	  <br><input name="city" id="city"></td>
+	<td colspan="3"><label for="province">Province</label>
+	  <br><input name="province" id="province"></td>
+	<td colspan="3"><label for="postal_code">Postal Code</label>
+	  <br><input name="postal_code" id="postal_code"></td>
+      </tr>
+      <tr>
+    <td colspan="3"><label for="email">Email</label>
+      <br><input name="email" id="email" required></td>
+    <td colspan="3"><label for="phone">Phone</label>
+      <br><input name="phone" id="phone"></td>
+    <td colspan="3"><label for="emergency_contact">Emergency Contact</label>
+      <br><input name="emergency_contact" id="emergency_contact"></td>
+    <td colspan="3"><label for="emergency_contact_phone">Emergency Contact Phone</label>
+      <br><input name="emergency_contact_phone" id="emergency_contact_phone"></td>
+    </tr>
+<tr>
+  <td colspan="6" align="center">
+    <select name="membership_class"><option selected value="">Membership Class</option>
+      <option value="Full">Full</option>
+      <option value="Student">Student</option>
+      <option value="Friend">Friend</option>
+      </select></td>
+    <td colspan="6" align="center"><input type="submit" value="Register"></td>
+</tr>
+</table>
+  </form>
+  {% endblock %}
+

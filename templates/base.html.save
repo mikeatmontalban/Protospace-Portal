@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='protospace.css') }}">
+    <title>{% block title %}{% endblock %} - Flaskr</title>
+    {% endblock %}
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse" role="navigation">
+	<h1>PROTOSPACE</h1>
+
+      <!-- div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" -->
+    
+	{% if g.user %}
+	<ul class="nav navbar-nav">
+	  <li><a href="{{ url_for('member.member') }}">{{ g.user[3] }} {{ g.user[2] }} {{ g.user[4] }}</a>
+	</ul>
+
+	<div class="dropdown">
+	  <span>Dropdown</span>
+	  <div class="dropdown-content">
+            <a href="{{ url_for('access_info') }}">Access Information</a>
+	    <hr><strong>Membership</strong>
+	    <br><a href="{{ url_for('membership.member_list') }}">Member list</a>
+	    <br><a href="{{ url_for('membership.member_count') }}">Member Count</a>
+	    <hr><strong>Training</strong>
+	    {% if g.user[4] == "DIRECTOR" %}
+	    <hr><strong>Money</strong>
+            <br><a href="/admin/money/take_cash">Collect Cash Payment</a>
+            <br><a href="/admin/money/cash_report">Cash Drawer</a>
+            <br><a href="/admin/money/all_transactions">All Recent Transactions</a>
+            <br><a href="/admin/money/new_ipns">Paypal IPN, last 30 days</a>
+            <br><a href="/admin/money/ipn_review">All Processed Paypal IPN Records</a>
+            <br><a href="/admin/money/no_match_ipn">Unmatched Paypal IPNs</a>
+            <br><a href="/admin/money/create_paypal_link">Create a custom Paypal link</a>
+            <br><a href="/admin/money/replay_missed_payload">Replay a missed Paypal IPN Payload</a>
+            <br><a href="/admin/money/all_member_cash_journal">Member Cash Journal for all members</a>
+	    <hr><strong>Members</strong>
+            <br><a href="/admin/members/reset_password">Reset a Password</a>
+            <br><a href="/admin/members/delete_duplicate_member">Delete a duplicate member</a>
+            <br><a href="/admin/members/add_second_email">Add a secondary email</a>
+            <br><a href="/admin/members/add_keycard">Add a key card</a>
+            <br><a href="/admin/members/vacation">Member Vacation or Resignation :(</a>
+
+	    <hr><strong>Training</strong>
+            <br><a href="/admin/training/schedule_class">Schedule a training class (for an existing course)</a>
+            <br><a href="/admin/training/training_history">Training class history</a>
+            <br><a href="/admin/training/open_shopping_carts">All open shopping carts</a>
+	    <hr><strong>The Space</strong>
+            <br><a href="/admin/the_space/door_access">Door Access Records</a>
+            <br><a href="/admin/the_space/update_door_controller">Update Door Controller (Pi) with current data</a> 
+	    <hr><strong>The Web</strong>
+            <br><a href="/admin/Diag">Server Diagnostics and Browser Vars</a>
+            <br><a href="/admin/ForceSessionOnly">Prevent auto login in this browser</a>
+            <br><a href="/admin/MarkPrivateBrowser">Mark as Private Browser</a>
+	    <hr>
+	    {% endif %}
+	    </div>
+	  </div>
+
+	  &nbsp;&nbsp;<a href="{{ url_for('auth.logout') }}">Log Out</a>
+	  {% else %}
+	  <a href="{{ url_for('auth.register') }}">Sign Up</a>
+	  &nbsp;&nbsp;<a href="{{ url_for('auth.login') }}">Log In</a>
+	  {% endif %}
+</nav>
+
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
+
+<section class="footer">
+  {% block footer %}
+  <center><hr>It is now: {{ now  }}
+    <br>Bugs? Issues? Questions? Send email to <tt>info@protospace.ca</tt>.</br>
+  </center>
+  {% endblock %}
+</section>
+
+</body>
+</html>

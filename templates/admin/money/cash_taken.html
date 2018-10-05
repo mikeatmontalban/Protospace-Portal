@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}Cash Taken{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div>
+  <h3>Cash Taken</h3>
+
+  <table border="1" cellspacing="12">
+    <tr><td align="right">date</td><td align="left">{{ date }}</td></tr>
+    <tr><td align="right">account</td><td align="left">{{ account }}</td></tr>
+    <tr><td align="right">refnum</td><td align="left">{{ refnum }}</td></tr>
+    <tr><td align="right">memberbox</td><td align="left">{{ memberbox }}</td></tr>
+    <tr><td align="right">paidby</td><td align="left">{{ paidby }}</td></tr>
+    <tr><td align="right">amount</td><td align="left">{{ amount }}</td></tr>
+    <tr><td align="right">category</td><td align="left">{{ category }}</td></tr>
+    <tr><td align="right">months</td><td align="left">{{ months }}</td></tr>
+    <tr><td align="right">memo</td><td align="left">{{ memo }}</td></tr>
+  </table>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h3>Administration</h3>
+{% endblock %}
+
+{% block content %}
+    <h4>Money</h4>
+    <ul style="margin-top:-1em;">
+        <li><a href="/admin/money/takecash">Collect Cash Payment</a></li>
+        <li><a href="/admin/money/CashReport">Cash Drawer</a></li>
+        <li><a href="/admin/money/AllTrans">All Recent Transactions</a></li>
+        <li><a href="/admin/money/newIPNs">Paypal IPN, last 30 days</a></li>
+        <li><a href="/admin/money/IPNReview">All Processed Paypal IPN Records</a></li>
+        <li><a href="/admin/money/noMatchIPN">Unmatched Paypal IPNs</a></li>
+        <li><a href="/admin/money/CreatePaypal">Create a custom Paypal link</a><br /></li>
+        <li><a href="/admin/money/replay">Replay a missed Paypal IPN Payload</a><br /></li>
+        <li><a href="/admin/money/MemberJournal/0/All">Member Cash Journal for all members</a><br /></li>
+    </ul>
+
+    <h4>Members</h4>
+    <ul style="margin-top:-1em;">
+        <li><a href="/admin/members/reset_password">Reset a Password</a></li>
+        <li><a href="/admin/members/delete_duplicate_member">Delete a duplicate member</a></li>
+        <li><a href="/admin/members/add_second_email">Add a secondary email</a></li>
+        <li><a href="/admin/members/add_keycard">Add a key card</a></li>
+        <li><a href="/admin/members/vacation">Member Vacation or Resignation :(</a></li>
+    </ul>
+
+    <h4>Training</h4>
+    <ul style="margin-top:-1em;">
+        <li><a href="/admin/training/schedule_class">Schedule a training class (for an existing course)</a></li>
+        <li><a href="/admin/training/training_history">Training class history</a></li>
+        <li><a href="/admin/training/open_shopping_carts">All open shopping carts</a></li>
+    </ul>
+
+    <h4>The Space</h4>
+    <ul style="margin-top:-1em;">
+        <li><a href="/admin/the_space/door_access">Door Access Records</a></li>
+        <li><a href="/admin/the_space/update_door_controller">Update Door Controller (Pi) with current data</a> </li>
+    </ul>
+
+<h4>Web</h4>
+    <ul style="margin-top:-1em;">
+        <li><a href="/admin/Diag">Server Diagnostics and Browser Vars</a><br /></li>
+        <li><a href="/admin/ForceSessionOnly">Prevent auto login in this browser</a></li>
+
+            <li><a href="/admin/MarkPrivateBrowser">Mark as Private Browser</a></li>
+    </ul>
+
+{% endblock %}

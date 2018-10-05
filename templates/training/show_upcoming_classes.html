@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Class list</h3>
+
+<table border="1" cellspacing="1">
+  <tr><th>Subject</th><th>Class Number</th><th>Date and Time</th><th>Confirmed</th><th>Open</th><td>&nbsp;</td></tr>
+  {% for (course_title,class_id,course_id,class_date_time,confirmed,available) in class_list %}
+  <tr>
+    <td>{{ course_title|safe }}</td>
+    <td>{{ class_id }}</td>
+    <td>{{ class_date_time }}</td>
+    <td align="center">{{ confirmed }}</td>
+    <td align="center">{{ available }}</td>
+    <td><a href="/class_details/{{ course_id }}">Learn more</a></td></tr>
+{% endfor %}
+  </table>
+{% endblock %}
+

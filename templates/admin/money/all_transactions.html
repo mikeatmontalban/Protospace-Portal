@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}Recent Transactions{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    
+<table class="grid">
+  <thead>
+    <tr class="head">
+      <th scope="col">Date</th>
+      <th scope="col">Member</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Mth</th>
+      <th scope="col">TransMemo</th>
+      <th scope="col">TransID</th>
+      <th scope="col">Receipt</th>
+      <th scope="col">Method</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for (date,name,amount,mth,description,transid,receipt,method) in transactions %}
+    <tr>
+      <td>{{ date }}</td><td>{{ name }}</td><td align="right">{{ amount }}</td>
+      <td>{{ mth }}</td><td>{{ description }}</td>
+      <td align="right">{{ transid }}</td><td>{{ receipt }}</td><td>{{ method }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+
+</table>
+
+{% endblock %}

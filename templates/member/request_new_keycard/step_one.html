@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}Request an ID or Keycard{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<h3 style="margin-top:0; margin-bottom:0.5em;">{{ g.user[3] }} {{ g.user[2] }}</h3>
+
+<form method="post">
+  <table border="0" cellspacing="12">
+    <tr>
+      <td valign="top"><img src="{{ url_for('static',filename='img/members/' + g.user[1] + '.photo.jpg') }}" alt="Member Photo of {{ g.user[3] }} {{ g.user[2] }}" />
+      </td>
+
+      <td valign="top">
+	<select name="photo_choice" id="photo_choice">
+          <option value="UseDB">Use this member photo</option>
+          <option value="Upload">Upload a new photo</option>
+          <option value="CropDB">Crop this photo</option>
+	</select>
+      </td>
+
+      <td valign="top"><input type="submit" name="request_new_keycard_one" value="Next" /></td>
+
+    </tr>
+  </table>
+
+</form>
+
+{% endblock %}

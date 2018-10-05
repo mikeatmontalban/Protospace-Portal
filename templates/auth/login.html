@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Log In{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post" action="{{ url_for('auth.login') }}">
+    <label for="username">Username</label>
+    <input name="username" id="username" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+    <input type="submit" value="Log In">
+  </form>
+
+
+<h1>New Here?</h1>
+
+
+  <form method="post" action="{{ url_for('auth.set_password') }}">
+    <label for="identifier">First name, last name or email address</label>
+    <input name="identifier" type="text" id="identifier" required>
+    <label for="password">Password</label>
+    <input name="password" type="password" id="password" required>
+    <label for="password2">Verify password</label>
+    <input name="password2" type="password" id="password2" required>
+    <input type="submit" value="Request Login Info">
+  </form>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Register{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="lastname">Last Name</label>
+    <input name="lastname" id="lastname" required>
+    <label for="firstname">First Name</label>
+    <input name="firstname" id="firstname" required>
+    <label for="nickname">Nickname</label>
+    <input name="nickname" id="nickname">
+    <label for="mailing_address">Mailing Address</label>
+    <input name="mailing_address" id="mailing_address">
+    <label for="city">City</label>
+    <input name="city" id="city">
+    <label for="province">Province</label>
+    <input name="province" id="province">
+    <label for="postal_code">Postal Code</label>
+    <input name="postal_code" id="postal_code">
+    <label for="email">Email</label>
+    <input name="email" id="email" required>
+    <label for="phone">Phone</label>
+    <input name="phone" id="phone">
+    <label for="emergency_contact">Emergency Contact</label>
+    <input name="emergency_contact" id="emergency_contact">
+    <label for="emergency_contact_phone">Emergency Contact Phone</label>
+    <input name="emergency_contact_phone" id="emergency_contact_phone">
+    <label for="membership_class">Membership Cclass</label>
+    <input name="membership_class" id="membership_class">
+    <label for="application_date">Application Date</label>
+    <input name="application_date" id="application_date">
+    <label for="current_start">Current Start</label>
+    <input name="current_start" id="current_start">
+    <label for="vetted_date">Vetted Date</label>
+    <input name="vetted_date" id="vetted_date">
+    <label for="ended_date">Ended Date</label>
+    <input name="ended_date" id="ended_date">
+    <label for="earliest_membership_start">Earliest Membership Start</label>
+    <input name="earliest_membership_start" id="earliest_membership_start">
+    <label for="latest_membership_start">Latest Membership Start</label>
+    <input name="latest_membership_start" id="latest_membership_start">
+    <label for="current_membership_start">Current Membership Start</label>
+    <input name="current_membership_start" id="current_membership_start">
+    <input type="submit" value="Register">
+  </form>
+  {% endblock %}
+

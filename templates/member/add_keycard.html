@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}Add Keycard{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    
+<form method="post">
+  <select name="member_id">
+    {% for (member_id,firstname,lastname) in member_names %}
+    <br><option value="{{ member_id }}">{{ firstname + ' ' + lastname }}</option>
+    {% endfor %}
+  </select>
+
+  <div style="margin-top:8px;"><label for="new_addr">New keycard number (from scanner on office computer):</label></div>
+  <div style="margin-top:4px;margin-bottom:12px;"><input style="margin-top:0px" name="key_number" /></div>
+  <input style="margin-top:px;" type="submit" name="ActionButton" value="Add new keycard number" />
+  
+</form>
+</div>
+
+{% endblock %}

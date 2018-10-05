@@ -1,0 +1,48 @@
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;This course prepares you to use our CNC Tormach Mill.&lt;/p&gt;
+&lt;h3&gt;Course Schedule&lt;/h3&gt;
+&lt;p&gt;Training for the Tormach (CNC Mill) consists of three&amp;nbsp;sections.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Classroom Session
+&lt;ul&gt;
+&lt;li&gt;milling and machining basics&lt;/li&gt;
+&lt;li&gt;introductory CAM (Computer Aided Manufacturing)&lt;/li&gt;
+&lt;li&gt;This classroom-based session lasts about four hours.&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;CAM File preparation
+&lt;ul&gt;
+&lt;li&gt;CAM is the software used to generate the g-code programs that the CNC mill executes to run the job.&lt;/li&gt;
+&lt;li&gt;All participants will&amp;nbsp;use Mach 3 (our g-code pre-processor) to prepare files for the Tormach itself.&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Tormach Practical
+&lt;ul&gt;
+&lt;li&gt;You will learn how to start up, shut down and clean up the machine&lt;/li&gt;
+&lt;li&gt;You will perform a practical cut&amp;nbsp;and make a set of sacrificial jaws from aluminium.&lt;/li&gt;
+&lt;li&gt;The actual cutting project will be scheduled in pairs AFTER completing the first part of the course.&lt;/li&gt;
+&lt;li&gt;Most participants need 3 to 4 hours to complete the project with their co-participant. Therefore, many participants will complete the project on a different day.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Special Requirements (Software)&lt;/h3&gt;
+&lt;p&gt;This course will use Fusion 360 which can be downloaded and installed for free from Autodesk. If you are not attending a Protospace 3D CAD course before this course, please complete some of the tutorials and have a good understanding of how to use the program. If you are unable to use your CAD software at the start of the class, you will not be allowed to continue.&lt;/p&gt;
+&lt;h3&gt;Prerequisites and Eligibility&lt;/h3&gt;
+&lt;p&gt;This course is only available to keyholders (vetted members in good standing).&lt;/p&gt;
+&lt;p&gt;Prior to this course, you must have completed the Protospace lathe training or been specifically approved.&lt;/p&gt;
+&lt;h3&gt;Cost&lt;/h3&gt;
+&lt;p&gt;The course requires payment of the fee, and a contribution of 1 coffee.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The fee covers the cost of material for the project, and 3/8&quot; 2 flute end-mill that is yours to keep.&lt;/li&gt;
+&lt;li&gt;The coffee payment (large, 1 cream, one artificial sweetener) is due at the start of the practical portion of the course. &lt;br /&gt;Further coffee may be required to those who supervise or help with your first job personal job or project.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Tool use after training&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Using the Tormach correctly involves understanding a lot of new information, and the cost of a mistake could be exorbitantly high (damage to the machine and your project). Therefore, the first job or two that you do the Tormach must be supervised until you demonstrate skill and confidence with machine and the workflow of using it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;

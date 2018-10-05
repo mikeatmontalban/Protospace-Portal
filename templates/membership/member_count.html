@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}    
+
+{% block content %}
+
+<h1>Membership Dashboard</h1>
+
+<div class="row">
+    <div class="column410">
+        <div id="PayStat" name="PayStat">
+            <h3>Payment Status</h3>
+            <div id="Ajax5" name="Ajax5">
+                        <script type="text/javascript">
+        (function($) {
+            $.fn.swhgLoad = function(url, containerId, callback) {
+                url = url + (url.indexOf('?') == -1 ? '?' : '&') + '__swhg=' + new Date().getTime();
+
+                $('<div/>').load(url + ' ' + containerId, function(data, status, xhr) {
+                    $(containerId).replaceWith($(this).html());
+                    if (typeof(callback) === 'function') {
+                        callback.apply(this, arguments);
+                    }
+                });
+                return this;
+            }
+
+            $(function() {
+                $('table[data-swhgajax="true"],span[data-swhgajax="true"]').each(function() {
+                    var self = $(this);
+                    var containerId = '#' + self.data('swhgcontainer');
+                    var callback = getFunction(self.data('swhgcallback'));
+
+                    $(containerId).parent().delegate(containerId + ' a[data-swhglnk="true"]', 'click', function() {
+                        $(containerId).swhgLoad($(this).attr('href'), containerId, callback);
+                        return false;
+                    });
+                })
+            });
+
+            function getFunction(code, argNames) {
+                argNames = argNames || [];
+                var fn = window, parts = (code || "").split(".");
+                while (fn && parts.length) {
+                    fn = fn[parts.shift()];
+                }
+                if (typeof (fn) === "function") {
+                    return fn;
+                }
+                argNames.push(code);
+                return Function.constructor.apply(null, argNames);
+            }
+        })(jQuery);
+        </script>
+    <table data-swhgajax="true" data-swhgcontainer="Ajax5" data-swhgcallback="" border="1" cellspacing="12">
+    <thead>
+        <tr class="head">
+            <th scope="col"><a data-swhglnk="true" href="/Account/Dashboard?sort=Description&amp;sortdir=ASC">Description</a></th>
+            <th scope="col"><a data-swhglnk="true" href="/Account/Dashboard?sort=Count&amp;sortdir=ASC">Count</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Active Paying Members</td><td align="right">{{ payment_status[0] }}</td></tr>
+        <tr><td>Active Contractor, Intern, Test Cards</td><td align="right">{{ payment_status[1] }}</td></tr>
+        <tr><td>Payment is Current</td><td align="right">{{ payment_status[2] }}</td></tr>
+        <tr><td>Payment Due Now (30 days or less)</td><td align="right">{{ payment_status[3] }}</td></tr>
+        <tr><td>Payment Overdue (30-150 days late)</td><td align="right">{{ payment_status[4] }}</td></tr>
+        <tr><td>Non-Active, Expired and Historical</td><td align="right">{{ payment_status[5] }}</td></tr>
+    </tbody>
+    </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="column410">
+        <div id="Summary" name="Summary">
+            <h3>Rate Summary</h3>
+                <table class="fixed325" border="1" cellspacing="12">
+    <thead>
+        <tr class="head">
+            <th scope="col"><a href="/Account/Dashboard?sort=Category&amp;sortdir=ASC">Category</a></th>
+            <th scope="col"><a href="/Account/Dashboard?sort=Number&amp;sortdir=ASC">Number</a></th>
+            <th scope="col"><a href="/Account/Dashboard?sort=MonthlyIncome&amp;sortdir=ASC">Monthly Income</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Friend Member</td><td align="right">{{ rate_summary[0][0] }}</td><td align="right">{{ rate_summary[0][1] }}</td></tr>
+        <tr><td>Subsidized Member</td><td align="right">{{ rate_summary[1][0] }}</td><td align="right">{{ rate_summary[1][1] }}</td></tr>
+        <tr><td>Regular Member</td><td align="right">{{ rate_summary[2][0] }}</td><td align="right">{{ rate_summary[2][1] }}</td></tr>
+    </tbody>
+    </table>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="column410b" id="Rate Details" name="Rate Details">
+        <h3>Rate Details</h3>
+        <div id="Ajax2" name="Ajax2">
+                <table class="fixed732" border="1" cellspacing="12">
+    <thead>
+      <tr class="head">
+	<th scope="col"><a href="/Account/Dashboard?sort=Category&amp;sortdir=ASC">Category</a></th>
+        <th scope="col"><a href="/Account/Dashboard?sort=Description&amp;sortdir=ASC">Description</a></th>
+        <th scope="col"><a href="/Account/Dashboard?sort=Number&amp;sortdir=ASC">Count</a></th>
+        <th scope="col"><a href="/Account/Dashboard?sort=Monthly&amp;sortdir=ASC">Rate</a></th>
+        <th scope="col"><a href="/Account/Dashboard?sort=MonthlyIncome&amp;sortdir=ASC">Maximum Income</a></th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+	<td class="elip-narrow25">Friend Member</td>
+        <td class="elip-wide">Friend of Protospace / Donor</td>
+        <td class="textright  fixed60">{{ rate_details[0][0] }}</td>
+        <td class="textright font11 fixed60 ">{{ rate_details[0][1] }}</td>
+        <td class="textright font11 fixed60 ">{{ rate_details[0][2] }}</td>
+        </tr>
+      <tr class="altRow">
+        <td class="elip-narrow25">Subsidized Member</td>
+        <td class="elip-wide">Subsidized Member, Old Rate</td>
+        <td class="textright  fixed60">{{ rate_details[1][0] }}</td>
+        <td class="textright font11 fixed60 ">{{ rate_details[1][1] }}</td>
+        <td class="textright font11 fixed60 ">{{ rate_details[1][2] }}</td>
+      </tr>
+      <tr>
+        <td class="elip-narrow25">Subsidized Member</td>
+        <td class="elip-wide">Subsidized Member</td>
+        <td class="textright  fixed60">{{ rate_details[2][0] }}</td>
+        <td class="textright font11 fixed60 ">{{ rate_details[2][1] }}</td>
+        <td class="textright font11 fixed60 ">{{ rate_details[2][2] }}</td>
+      </tr>
+      <tr class="altRow">
+        <td class="elip-narrow25">Regular Member</td>
+        <td class="elip-wide">Regular Member, Old Rate</td>
+        <td class="textright  fixed60">{{ rate_details[3][0] }}</td>
+        <td class="textright font11 fixed60 ">{{ rate_details[3][1] }}</td>
+        <td class="textright font11 fixed60 ">{{ rate_details[3][2] }}</td>
+      </tr>
+      <tr>
+        <td class="elip-narrow25">Regular Member</td>
+        <td class="elip-wide">Regular Member</td>
+        <td class="textright  fixed60">{{ rate_details[4][0] }}</td>
+        <td class="textright font11 fixed60 ">{{ rate_details[4][1] }}</td>
+        <td class="textright font11 fixed60 ">{{ rate_details[4][2] }}</td>
+      </tr>
+    </tbody>
+    </table>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="column410">
+        <div id="Oldies" name="Oldies">
+            <h3>Most Senior Members</h3>
+            <div id="Ajax3" name="Ajax3">
+              <table data-swhgajax="true" data-swhgcontainer="Ajax3" data-swhgcallback="" border="1" cellspacing="12">
+    <thead>
+        <tr class="head">
+            <th scope="col"><a data-swhglnk="true" href="/Account/Dashboard?sort=date_joined&amp;sortdir=ASC">Joined</a></th>
+            <th scope="col"><a data-swhglnk="true" href="/Account/Dashboard?sort=total_months&amp;sortdir=ASC">Months</a></th>
+            <th scope="col"><a data-swhglnk="true" href="/Account/Dashboard?sort=Name&amp;sortdir=ASC">Name</a></th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for member in senior_members %}
+      <tr>
+        <td><div class='wrap'>{{ member[0] }}</div></td>
+        <td class="font11 textright">{{ member[1] }}</td>
+        <td><div class='wrap'><a href="/account/ShowMember/227">{{ member[2] }}</a></div></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr  class="nomargin nopadding font11 head">
+            <td colspan="3">1 <a data-swhglnk="true" href="/Account/Dashboard?page=2">2</a> <a data-swhglnk="true" href="/Account/Dashboard?page=3">3</a> <a data-swhglnk="true" href="/Account/Dashboard?page=2">&gt;</a> </td>
+        </tr>
+    </tfoot>
+    </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="column410">
+        <div id="History" name="History">
+            <h3>History</h3>
+            <div id="Ajax4" name="Ajax4">
+                    <table class="fixed325" data-swhgajax="true" data-swhgcontainer="Ajax4" data-swhgcallback="" border="1" cellspacing="12">
+    <thead>
+        <tr class="head">
+            <th scope="col"><a data-swhglnk="true" href="/Account/Dashboard?sort=TransPeriod&amp;sortdir=ASC">Month</a></th>
+            <th scope="col"><a data-swhglnk="true" href="/Account/Dashboard?sort=TotalCount&amp;sortdir=ASC">Number</a></th>
+            <th scope="col"><a data-swhglnk="true" href="/Account/Dashboard?sort=AvgMonth&amp;sortdir=ASC">Average</a></th>
+            <th scope="col"><a data-swhglnk="true" href="/Account/Dashboard?sort=Friends&amp;sortdir=ASC">Friend</a></th>
+            <th scope="col"><a data-swhglnk="true" href="/Account/Dashboard?sort=Subidized&amp;sortdir=ASC">Subsidized</a></th>
+            <th scope="col"><a data-swhglnk="true" href="/Account/Dashboard?sort=Fulls&amp;sortdir=ASC">Full</a></th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for record in membership_history %}
+      <tr>
+        <td>{{ record[0] }}</td>
+        <td class="textright">{{ record[1] }}</td>
+        <td class="textright">{{ record[2] }}</td>
+        <td class="font11 textright">{{ record[3] }}</td>
+        <td class="font11 textright">{{ record[4] }}</td>
+        <td class="font11 textright">{{ record[5] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr  class="nomargin nopadding font11 head">
+            <td colspan="6"><a data-swhglnk="true" href="/Account/Dashboard?page=2">&gt;</a> </td>
+        </tr>
+    </tfoot>
+    </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h3>Schedule a Class</h3>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+    <div style="color:red;">
+
+        <div class="validation-summary-valid" data-valmsg-summary="true"><ul>
+</ul></div>
+    </div>
+
+      <table border="0" cellspacing="12">
+	{% if page == "1" %}
+	<tr><th align="right"><label class="width125" for="course">Choose a course:</label></th>
+        <td align="left"><select id="course" name="course_id">
+	  {{ course_list|safe }}
+	  </select>
+</td></tr>
+
+<tr><th align="right">Class date:</th><td align="left"><input  type="date" name="class_date" value="" /></td></tr>
+<tr><th align="right">Starting time:</th><td align="left"><input type="time" name="start_time" value="" placeholder="02:00 PM" /></td></tr>
+<tr><th align="right">Member Cost:</th><td align="left"><input type="number" name="fee_for_member" min="0" max="1000" value="0" /></td></tr>
+<tr><th align="right">Non-Member Cost:</th><td align="left"><input type="number" name="fee_for_nonmember" min="0" max="1000" value="10" /></td></tr>
+<tr><td colspan="2" align="center"><input type="submit" name="ActionButton" value="Next" /></td></tr>
+
+{% elif page == "2" %}
+<tr><th align="right">Minimum:</th><td align="left"><input type="number" name="min" min="0" max="100" value="1" /></td></tr>
+<tr><th align="right">Maximum:</th><td align="left"><input type="number" name="max" min="1" max="100" value="1" /></td></tr>
+<tr><th align="right" valign="middle">Instructor:</th>
+<td align="left">{{ inst_list|safe }}</td></tr>
+
+<tr><th align="right" valign="middle">Course Administrator:</th>
+<td align="left">{{ adm_list|safe }}</td></tr>
+
+<tr><th align="right">Allow members to self-register online</th><td align="left"><input checked="checked" id="online_reg" name="online_reg" type="checkbox" /></td></tr>
+<tr><td colspan="2" align="center"><input type="submit" name="ActionButton" value="Finish" /></td></tr>
+<input type="hidden" name="course_id" value="{{ course_id }}">
+<input type="hidden" name="class_date_time" value="{{ class_date_time }}">
+<input type="hidden" name="fee_for_member" value="{{ fee_for_member }}">
+<input type="hidden" name="fee_for_nonmember" value="{{ fee_for_nonmember }}">
+
+{% elif page == "3" %}
+<tr><th colspan="2" align="center">The following class has been created</th></tr>
+<tr><th align="left">Course name:</th><td align="left">{{ course_title }}</td></tr>
+	<tr><th align="left">Date and starting time:</th><td align="left">{{ class_date_time }}</td></tr>
+	<tr><th align="left">Course instructor:</th><td align="left">{{ instructor }}</td></tr>
+	<tr><th align="left">Course administrator:</th><td align="left">{{ administrator }}</td></tr>
+	<tr><th align="left">Fee for member:</th><td align="left">{{ fee_for_member }}</td></tr>
+	<tr><th align="left">Fee for non-member:</th><td align="left">{{ fee_for_nonmember }}</td></tr>
+	<tr><th align="left">Minimum number of attendees:</th><td align="left">{{ minimum }}</td></tr>
+	<tr><th align="left">Maximum number of attendees:</th><td align="left">{{ maximum }}</td></tr>
+	<tr><td colspan="2" align="center">{{ self_registration }}</td></tr>
+{% endif %}
+</table>
+
+</form>
+
+{% endblock %}

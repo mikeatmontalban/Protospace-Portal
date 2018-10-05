@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}Member Cash Balance{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    
+<a href="/admin/money/member_journal">Show Recent</a>
+
+<table border="0" cellspacing="6">
+  <tr><th>Date</th><th>Transaction</th><th>Description</th><th>Amount</th><th>Balance</th><th>Category</th></tr>
+  <tbody>
+    {% for (date,transaction,description,amount,balance,category) in journal %}
+    <tr>
+      <td>{{ date }}</td><td align="right">{{ transaction }}</td><td>{{ description }}</td>
+      <td align="right">{{ amount }}</td><td align="right">{{ balance }}</td><td>{{ category }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+    <tfoot>
+        <tr >
+          <td colspan="6">1 <a href="/Account/MemberJournal/0/All?page=2">2</a>
+	    <a href="/Account/MemberJournal/0/All?page=3">3</a>
+	    <a href="/Account/MemberJournal/0/All?page=4">4</a>
+	    <a href="/Account/MemberJournal/0/All?page=5">5</a>
+	    <a href="/Account/MemberJournal/0/All?page=2">Next</a>
+	    <a href="/Account/MemberJournal/0/All?page=73">Last</a></td>
+        </tr>
+    </tfoot>
+  </table>
+
+{% endblock %}

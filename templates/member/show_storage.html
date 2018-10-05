@@ -1,0 +1,18 @@
+{% extends 'member/home.html' %}
+
+{% block member_home_header %}
+<h1 align="center">{% block title %}Storage{% endblock %}</h1>
+{% endblock %}
+
+{% block member_home_content %}
+
+  <table border="1" cellspacing="12">
+    <tr><th>Location</th><th>Description</th><th>Until</th></tr>
+    <tr>
+      <td>{{ location }}</td>
+      <td>{{ description }}</td>
+      <td>Ending date</td>
+    </tr>
+    </table>
+
+{% endblock %}

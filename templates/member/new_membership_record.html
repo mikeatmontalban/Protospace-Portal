@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 align="center">{% block title %}New Membership Record{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<h3>New Membership Record</h3>
+
+<form method="POST">
+  <a href="">Mike Morrow</a>
+
+  <p><table border="0" cellspacing="0">
+<tr><td align="right"><label for="memberType"> Membership type:</label></td><td><select name="member_type">
+      <option value="">-- Select Category --</option>
+      <option value="FU  ">Regular Member</option>
+      <option value="F16 ">Regular Member, Old Rate</option>
+      <option value="ST  ">Subsidized Member</option>
+      <option value="S16 ">Subsidized Member, Old Rate</option>
+      <option value="BE  ">Friend of Protospace / Donor</option>
+      <option value="CO  ">Contractor or Staff</option>
+      <option value="CU  ">Other (Custom)</option>
+      <option value="SP  ">Samples/Special</option>
+      <option value="VA  ">Member Pause (Vacation)</option>
+      <option value="AP  ">Prospective Member</option>
+      <option value="FC  ">Apex (FRC) Competitor</option>
+      <option value="FM  ">Apex (FRC) Mentor</option>
+      <option value="FO  ">Apex (FRC) Contact/Parent</option>
+      <option value="GU  ">Guest / Drop-In / Trainee</option>
+      <option value="HI  ">Previous Membership</option>
+      <option value="NA17">Nexus (FRC) Adult</option>
+      <option value="NONE">No Membership Records</option>
+      <option value="NX17">Nexus (FRC) Team (Youth)</option>
+      <option value="RE  ">Member Resigned</option>
+    </select>
+    </td></tr>
+
+<tr><td align="right"><label for="monthly_amt">Monthly Amount: </label></td>
+  <td align="left"><input type="number" name="monthly_amt" value="0.00" /></td></tr>
+<td align="right"><label for="StartDate">Started:</label></td><td align="left"><input name="StartDate" type="date" value=""></td></tr>
+<tr><td align="right"><label for="EndDate">Ended:</label></td><td align="left"><input name="EndDate" type="date" value=""></td></tr>
+<tr><td align="right"><label for="Notes">Notes:</label></td><td align="left"><input name="Notes" size="40" value=""></td></tr>
+<tr><td colspan="2" align="center"><input style="margin-top:4px;" type="submit" name="ActionButton" value="Create"></td></tr>
+</table>
+        
+</form>
+
+{% endblock %}

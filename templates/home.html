@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Class list</h3>
+
+<table border="1" cellspacing="1">
+  <tr><th>Subject</th><th>Class Number</th><th>Date and Time</th><th>Confirmed</th><th>Open</th><td>&nbsp;</td></tr>
+  {% for class in class_list %}
+  <tr>
+    <td>{{ class[0]|safe }}</td>
+    <td>{{ class[1] }}</td>
+    <td>{{ class[2] }}</td>
+    <td align="center">{{ class[3] }}</td>
+    <td align="center">{{ class[4] }}</td>
+    <td><a href="/class_details/{{ class[1] }}">Learn more</a></td></tr>
+{% endfor %}
+  </table>
+{% endblock %}
+
